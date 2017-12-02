@@ -63,6 +63,7 @@
 				populate(JSON.parse(req.response));
 			}
 		}).bind(req);
+		req.send();
 	}
 
 	var populate = function (response) {
