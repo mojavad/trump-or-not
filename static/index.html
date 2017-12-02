@@ -54,6 +54,7 @@
 
 	<script>
 	//var rand = {"id":"1","timestamp":"12:21 AM - Sep 29, 2014","content":"Every time I speak of the haters and losers I do so with great love and affection. They cannot help the fact that they were born fucked up!","isTrump":"FALSE" ,"correct":0,"wrong":0};
+rand = {};
 	var getRand = function () {
 		var req = new XMLHttpRequest();
 		req.open("GET", "/random");
@@ -67,6 +68,7 @@
 	}
 
 	var populate = function (response) {
+		rand = response;
 		document.getElementById("TweetText").innerHTML = response.content;
 		document.getElementById("timeanddate").innerHTML = response.timestamp;
 	}
