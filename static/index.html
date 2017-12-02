@@ -39,7 +39,7 @@
 		<button id = "Fals">Not Trump!</button>
 	</div>
 
-		<p id = "TruString"><b>The Donald</b> has tweeted this...</p>
+		<p id = "TruString"></p>
 		<p id = "FalsString"> This is not from <b>The Donald's </b> twitter...</p>
 
 	<div id = "NextTweet">
@@ -73,27 +73,14 @@ rand = {};
 		document.getElementById("timeanddate").innerHTML = response.timestamp;
 	}
 
-	function trumpButton () {
+	function trumpButton (truth) {
 
 	document.getElementById("Tru").style.display = 'none';
 	document.getElementById("Fals").style.display = 'none';
 	document.getElementById("renewTweet").style.display = 'inline-block';
-
-		if (rand.isTrump == "TRUE") {
-			document.getElementById("TruString").style.display = 'block';
-
-		}
-
-		else {
-			document.getElementById("FalsString").style.display = 'block';
-		}
-
-}
-	function notTrumpButton () {
-
-	document.getElementById("Tru").style.display = 'none';
-	document.getElementById("Fals").style.display = 'none';
-	document.getElementById("renewTweet").style.display = 'inline-block';
+	var correctness = truth === rand.isTrump ? "Right! " : "Wrong! ";
+	document.getElementById("TruString").innerHTML = correctness + "<b>The Donald</b> has tweeted this...";
+	document.getElementById("FalsString").innerHTML = correctness + "This is not from <b>The Donald's</b> twitter.";
 	if (rand.isTrump == "TRUE") {
 			document.getElementById("TruString").style.display = 'block';
 	}
@@ -114,9 +101,10 @@ rand = {};
 
 	}
 
-	document.getElementById("Tru").addEventListener("click", trumpButton);
-	document.getElementById("Fals").addEventListener("click", notTrumpButton);
+	document.getElementById("Tru").addEventListener("click", trumpButton.bind(this, "TRUE"));
+	document.getElementById("Fals").addEventListener("click", trumpButton.bind(this, "FALSE"));
 	document.getElementById("renewTweet").addEventListener("click", renewPage);
+	document.getElementById("renewTweet").addEventListener("click", getRand.bind(window));
 	getRand();
 
 	</script>
