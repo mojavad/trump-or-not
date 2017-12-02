@@ -1,0 +1,108 @@
+<html>
+<head> 
+	<title>TrumpOrNot?</title>
+	<link rel="stylesheet" href="main.css">
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+	<div id = "header">
+		<h1><b>TrumpOrNot?</b></h1>
+		<h4>Did the 45th President of the United States of America tweet this?</h4>
+	</div>
+
+<div id = "main">
+	<div id = "TweetBox">
+		<div id = "TopTweet">
+		<div id = "ppic">
+		<img src = "img/profilePic.jpg" class="profilePic">
+		</div>
+		<div id = "NameTweet">
+		<a href="https://twitter.com/realDonaldTrump">Donald J. Trump</a>
+		<img src = "img/veri.jpeg" class="verified">
+		<p>@realDonaldTrump</p>
+		</div>
+		</div>
+		<div id= "MainContent">
+			<p id="TweetText"></p>
+		</div>
+		<div id= "TweetBottom">
+			<p id = "timeanddate">12:08 PM - 1 Dec 2017</p>
+			<img src = "img/twitter-foot.png">
+		</div>
+	</div>
+
+	<div id = "YesOrNo">
+		<button id = "Tru">Trump!</button>
+		<button id = "Fals">Not Trump!</button>
+	</div>
+
+		<p id = "TruString"><b>The Donald</b> has tweeted this...</p>
+		<p id = "FalsString"> This is not from <b>The Donald's </b> twitter...</p>
+
+	<div id = "NextTweet">
+		<button id ="renewTweet">New Tweet</button>
+	</div>
+	<div id = "YoutubeVid">
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/C-n3AMxdgsY" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+	<footer>© Copyright 2017 - Created by a group of passionate students in the UK</footer>
+
+
+	<script>
+	var rand = {"id":"1","timestamp":"12:21 AM - Sep 29, 2014","content":"Every time I speak of the haters and losers I do so with great love and affection. They cannot help the fact that they were born fucked up!","isTrump":"FALSE" ,"correct":0,"wrong":0};
+
+	function trumpButton () {
+
+	document.getElementById("Tru").style.display = 'none';
+	document.getElementById("Fals").style.display = 'none';
+	document.getElementById("renewTweet").style.display = 'inline-block';
+
+		if (rand.isTrump == "TRUE") {
+			document.getElementById("TruString").style.display = 'block';
+
+		}
+
+		else {
+			document.getElementById("FalsString").style.display = 'block';
+		}
+
+}
+	function notTrumpButton () {
+
+	document.getElementById("Tru").style.display = 'none';
+	document.getElementById("Fals").style.display = 'none';
+	document.getElementById("renewTweet").style.display = 'inline-block';
+	if (rand.isTrump == "TRUE") {
+			document.getElementById("TruString").style.display = 'block';
+	}
+
+	else {
+			document.getElementById("FalsString").style.display = 'block';
+	}
+
+}
+
+	function renewPage () {
+	document.getElementById("Tru").style.display = 'initial';
+	document.getElementById("Fals").style.display = 'initial';
+	document.getElementById("renewTweet").style.display = 'none';
+	document.getElementById("FalsString").style.display = 'none';
+	document.getElementById("TruString").style.display = 'none';
+
+
+	}
+
+	document.getElementById("Tru").addEventListener("click", trumpButton);
+	document.getElementById("Fals").addEventListener("click", notTrumpButton);
+	document.getElementById("renewTweet").addEventListener("click", renewPage);
+	document.getElementById("TweetText").innerHTML = rand.content;
+	document.getElementById("timeanddate").innerHTML = rand.timestamp;
+
+	</script>
+
+</body>
+</html>
