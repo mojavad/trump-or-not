@@ -1,19 +1,25 @@
+body {
+	padding: 0;
+	margin: 0;
+	font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	align-items: center;
+}
+* {
+	box-sizing: border-box;
+}
+
 h1, h4 {
 	text-align: center;
+	margin-bottom: 0;
+	margin-top: 10px;
+	font-family: 'Playfair Display SC', serif;
 }
 
 h1 {
-	font-family: 'Playfair Display SC', serif;
 	font-size: 40pt;
-	margin-bottom: 0;
-}
-
-h4 {
-	font-family: 'Playfair Display SC', serif;
-}
-
-#main {
-	align-items: center;
 }
 
 #trumpUnderlay {
@@ -61,7 +67,7 @@ h4 {
 }
 
 #nameTweet a {
-	font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+	
   	font-size: 18px;
   	font-weight: bold;
   	line-height: 16px;
@@ -75,18 +81,18 @@ h4 {
 #nameTweet p {
 	color: #707464;
 	margin-top: 7px;
-	font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+	
   	font-size: 12px;
   	line-height: 10px;
 }
 
 #mainContent p {
-	font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+	
   	font-size: 20px;
   	line-height: 28px;
 }
 
-#yesOrNo {
+#voting {
 	text-align: center;
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -112,7 +118,7 @@ h4 {
 }
 
 #tweetBottom p {
-	font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+	
 	font-size: 12px;
 	color: #707464;
 
@@ -127,7 +133,6 @@ h4 {
   text-decoration: none;
   outline: none;
   color: #fff;
-  font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
   background-color: #1693BA;
   border: none;
   border-radius: 15px;
@@ -143,29 +148,21 @@ h4 {
 }
 
 footer {
-	margin-top: 20px;
-	margin-bottom: 30px;
+	width: 100%;
+	margin-top: 10px;
+	border-top: 1px solid black;
+	padding: 5px;
 	text-align: center;
-	font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
-
 }
-#result {
-		display: none;
-		text-align: center;
+.spacer {
+	flex: 1 1 auto;
 }
 
-#result p {
+#message, #percentage {
+	padding-top: 10px;
+	height: 30px;
 	text-align: center;
-	font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
 	font-size: 18px;
-
-}
-
-#trueMessage, #falseMessage {
-		display: none;
-		text-align: center;
-		font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
-		font-size: 18px;
 }
 
 #yes, #no {
@@ -177,7 +174,7 @@ footer {
   text-decoration: none;
   outline: none;
   color: #fff;
-  font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+  
   background-color: #4379A6;
   border: none;
   border-radius: 15px;

@@ -8,57 +8,62 @@
 	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
 </head>
 <body>
-	<div id = "header">
+	<div id="header">
 		<h1><b>TrumpOrNot?</b></h1>
 		<h4>Did the 45th President of the United States of America tweet this?</h4>
 	</div>
-
-<div id = "main">
-	<div id = "tweetBox">
-		<div id = "topTweet">
-		<div id = "ppic">
+	<div id="tweetBox">
+		<div id="topTweet">
+		<div id="ppic">
 		<img src = "img/profilePic.jpg" class="profilePic">
 		</div>
-		<div id = "nameTweet">
+		<div id="nameTweet">
 		<a href="https://twitter.com/realDonaldTrump">Donald J. Trump</a>
 		<img src = "img/veri.jpeg" class="verified">
 		<p>@realDonaldTrump</p>
 		</div>
 		</div>
-		<div id= "mainContent">
+		<div id="mainContent">
 			<p id="tweetText"></p>
 		</div>
-		<div id= "tweetBottom">
-			<p id = "timestamp">12:08 PM - 1 Dec 2017</p>
+		<div id="tweetBottom">
+			<p id="timestamp">12:08 PM - 1 Dec 2017</p>
 			<img src = "img/twitter-foot.png">
 		</div>
 	</div>
-
-	<div id = "yesOrNo">
-		<button id = "yes">Trump!</button>
-		<button id = "no">Not Trump!</button>
+	<div class="spacer"></div>
+	<div id="message"></div>
+	<div id="percentage"></div>
+	<div id="voting">
+		<button id="yes">Trump!</button>
+		<button id="no">Not Trump!</button>
+		<button id="renewTweet">New Tweet</button>
 	</div>
-
-		<p id = "trueMessage"></p>
-		<p id = "falseMessage"> This is not from <b>The Donald's </b> twitter...</p>
-
-	<div id = "nextTweet">
-		<button id ="renewTweet">New Tweet</button>
-	</div>
-</div>
-</div>
-	<footer>© Copyright 2017 - Created by a group of passionate students in the UK</footer>
+	<footer>© Copyright 2017 - Created by Dylan Thinnes, Mohammad Javad, and another passionate student in the UK.</footer>
 
 
 	<script>
-rand = {};
+var rand = {};
 var getRand = function () {
 	var req = new XMLHttpRequest();
 	req.open("GET", "/random");
 	req.onreadystatechange = (function () {
 		if (this.readyState === 4) {
-			console.log(req);
-			populate(JSON.parse(req.response));
+			populate(JSON.parse(this.response));
+		}
+	}).bind(req);
+	req.send();
+}
+var getStatus = function (vote) {
+	var req = new XMLHttpRequest();
+	console.log(this.rand.id);
+	req.open("GET", "/vote/" + this.rand.id + "/" + vote);
+	req.onreadystatechange = (function () {
+		if (this.readyState === 4) {
+			console.log("status gotten", this.response);
+			var res = JSON.parse(this.response);
+			setPercent(res.correct, res.wrong, res.isTrump);
+			trumpButton(vote, res.isTrump);
 		}
 	}).bind(req);
 	req.send();
@@ -70,28 +75,34 @@ var populate = function (response) {
 	document.getElementById("timestamp").innerHTML = response.timestamp;
 }
 
-var trumpButton = function (truth) {
+var trumpButton = function (vote, isTrump) {
 	document.getElementById("yes").style.display = 'none';
 	document.getElementById("no").style.display = 'none';
 	document.getElementById("renewTweet").style.display = 'inline-block';
-	var correctness = truth === rand.isTrump ? "Right! " : "Wrong! ";
-	document.getElementById("trueMessage").innerHTML = correctness + "<b>The Donald</b> has tweeted this...";
-	document.getElementById("falseMessage").innerHTML = correctness + "This is not from <b>The Donald's</b> twitter.";
-	if (rand.isTrump == "TRUE") {
-		document.getElementById("trueMessage").style.display = 'block';
-	} else {
-		document.getElementById("falseMessage").style.display = 'block';
-	}
+	var correctness = vote === isTrump ? "Right! " : "Wrong! ";
+	if (isTrump === "TRUE") document.getElementById("message").innerHTML = correctness + "<b>The Donald</b> has tweeted this...";
+	else document.getElementById("message").innerHTML = correctness + "This is not from <b>The Donald's</b> twitter.";
+}
+var setPercent = function (correct, wrong, isTrump) {
+	var node = document.getElementById("percentage");
+	if (isTrump === "TRUE") var percentRight = correct / (wrong + correct);
+	else var percentRight = wrong / (wrong + correct);
+
+	node.innerHTML = (Math.floor(percentRight * 1000) / 10).toString() + "% of people got it right!";
+	if (percentRight > 0.75) node.style.color = "rgba(0,255,0)";
+	else if (percentRight > 0.5) node.style.color = "rgba(125,255,0)";
+	else if (percentRight > 0.25) node.style.color = "rgba(225,155,0)";
+	else node.style.color = "red";
 }
 var renewPage = function () {
 	document.getElementById("yes").style.display = 'initial';
 	document.getElementById("no").style.display = 'initial';
 	document.getElementById("renewTweet").style.display = 'none';
-	document.getElementById("falseMessage").style.display = 'none';
-	document.getElementById("trueMessage").style.display = 'none';
+	document.getElementById("message").innerHTML = "";
+	document.getElementById("percentage").innerHTML = "";
 }
-document.getElementById("yes").addEventListener("click", trumpButton.bind(this, "TRUE"));
-document.getElementById("no").addEventListener("click", trumpButton.bind(this, "FALSE"));
+document.getElementById("yes").addEventListener("click", getStatus.bind(this, "TRUE"));
+document.getElementById("no").addEventListener("click", getStatus.bind(this, "FALSE"));
 document.getElementById("renewTweet").addEventListener("click", renewPage);
 document.getElementById("renewTweet").addEventListener("click", getRand.bind(window));
 getRand();
