@@ -80,8 +80,8 @@ var trumpButton = function (vote, isTrump) {
 	document.getElementById("no").style.display = 'none';
 	document.getElementById("renewTweet").style.display = 'inline-block';
 	var correctness = vote === isTrump ? "Right! " : "Wrong! ";
-	if (isTrump === "TRUE") document.getElementById("message").innerHTML = correctness + "<b>The Donald</b> has tweeted this...";
-	else document.getElementById("message").innerHTML = correctness + "This is not from <b>The Donald's</b> twitter.";
+	if (isTrump === "TRUE") document.getElementById("message").innerHTML = correctness + "This <b>is</b> from The Donald's twitter.";
+	else document.getElementById("message").innerHTML = correctness + "This <b>is not</b> from The Donald's twitter.";
 }
 var setPercent = function (correct, wrong, isTrump) {
 	var node = document.getElementById("percentage");
