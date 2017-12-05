@@ -1,7 +1,7 @@
 <html>
 <head> 
-	<title>TrumpOrNot?</title>
-	<link rel="stylesheet" href="main.css">
+	<title>Trump Or Not?</title>
+	<link rel="stylesheet" href="/main.css">
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -14,99 +14,87 @@
 	</div>
 
 <div id = "main">
-	<div id = "TweetBox">
-		<div id = "TopTweet">
+	<div id = "tweetBox">
+		<div id = "topTweet">
 		<div id = "ppic">
 		<img src = "img/profilePic.jpg" class="profilePic">
 		</div>
-		<div id = "NameTweet">
+		<div id = "nameTweet">
 		<a href="https://twitter.com/realDonaldTrump">Donald J. Trump</a>
 		<img src = "img/veri.jpeg" class="verified">
 		<p>@realDonaldTrump</p>
 		</div>
 		</div>
-		<div id= "MainContent">
-			<p id="TweetText"></p>
+		<div id= "mainContent">
+			<p id="tweetText"></p>
 		</div>
-		<div id= "TweetBottom">
-			<p id = "timeanddate">12:08 PM - 1 Dec 2017</p>
+		<div id= "tweetBottom">
+			<p id = "timestamp">12:08 PM - 1 Dec 2017</p>
 			<img src = "img/twitter-foot.png">
 		</div>
 	</div>
 
-	<div id = "YesOrNo">
-		<button id = "Tru">Trump!</button>
-		<button id = "Fals">Not Trump!</button>
+	<div id = "yesOrNo">
+		<button id = "yes">Trump!</button>
+		<button id = "no">Not Trump!</button>
 	</div>
 
-		<p id = "TruString"></p>
-		<p id = "FalsString"> This is not from <b>The Donald's </b> twitter...</p>
+		<p id = "trueMessage"></p>
+		<p id = "falseMessage"> This is not from <b>The Donald's </b> twitter...</p>
 
-	<div id = "NextTweet">
+	<div id = "nextTweet">
 		<button id ="renewTweet">New Tweet</button>
 	</div>
-	<div id = "YoutubeVid">
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/C-n3AMxdgsY" frameborder="0" allowfullscreen></iframe>
 </div>
 </div>
 	<footer>© Copyright 2017 - Created by a group of passionate students in the UK</footer>
 
 
 	<script>
-	//var rand = {"id":"1","timestamp":"12:21 AM - Sep 29, 2014","content":"Every time I speak of the haters and losers I do so with great love and affection. They cannot help the fact that they were born fucked up!","isTrump":"FALSE" ,"correct":0,"wrong":0};
 rand = {};
-	var getRand = function () {
-		var req = new XMLHttpRequest();
-		req.open("GET", "/random");
-		req.onreadystatechange = (function () {
-			if (this.readyState === 4) {
-				console.log(req);
-				populate(JSON.parse(req.response));
-			}
-		}).bind(req);
-		req.send();
-	}
-
-	var populate = function (response) {
-		rand = response;
-		document.getElementById("TweetText").innerHTML = response.content;
-		document.getElementById("timeanddate").innerHTML = response.timestamp;
-	}
-
-	function trumpButton (truth) {
-
-	document.getElementById("Tru").style.display = 'none';
-	document.getElementById("Fals").style.display = 'none';
-	document.getElementById("renewTweet").style.display = 'inline-block';
-	var correctness = truth === rand.isTrump ? "Right! " : "Wrong! ";
-	document.getElementById("TruString").innerHTML = correctness + "<b>The Donald</b> has tweeted this...";
-	document.getElementById("FalsString").innerHTML = correctness + "This is not from <b>The Donald's</b> twitter.";
-	if (rand.isTrump == "TRUE") {
-			document.getElementById("TruString").style.display = 'block';
-	}
-
-	else {
-			document.getElementById("FalsString").style.display = 'block';
-	}
-
+var getRand = function () {
+	var req = new XMLHttpRequest();
+	req.open("GET", "/random");
+	req.onreadystatechange = (function () {
+		if (this.readyState === 4) {
+			console.log(req);
+			populate(JSON.parse(req.response));
+		}
+	}).bind(req);
+	req.send();
 }
 
-	function renewPage () {
-	document.getElementById("Tru").style.display = 'initial';
-	document.getElementById("Fals").style.display = 'initial';
-	document.getElementById("renewTweet").style.display = 'none';
-	document.getElementById("FalsString").style.display = 'none';
-	document.getElementById("TruString").style.display = 'none';
+var populate = function (response) {
+	rand = response;
+	document.getElementById("tweetText").innerHTML = response.content;
+	document.getElementById("timestamp").innerHTML = response.timestamp;
+}
 
-
+var trumpButton = function (truth) {
+	document.getElementById("yes").style.display = 'none';
+	document.getElementById("no").style.display = 'none';
+	document.getElementById("renewTweet").style.display = 'inline-block';
+	var correctness = truth === rand.isTrump ? "Right! " : "Wrong! ";
+	document.getElementById("trueMessage").innerHTML = correctness + "<b>The Donald</b> has tweeted this...";
+	document.getElementById("falseMessage").innerHTML = correctness + "This is not from <b>The Donald's</b> twitter.";
+	if (rand.isTrump == "TRUE") {
+		document.getElementById("trueMessage").style.display = 'block';
+	} else {
+		document.getElementById("falseMessage").style.display = 'block';
 	}
-
-	document.getElementById("Tru").addEventListener("click", trumpButton.bind(this, "TRUE"));
-	document.getElementById("Fals").addEventListener("click", trumpButton.bind(this, "FALSE"));
-	document.getElementById("renewTweet").addEventListener("click", renewPage);
-	document.getElementById("renewTweet").addEventListener("click", getRand.bind(window));
-	getRand();
-
+}
+var renewPage = function () {
+	document.getElementById("yes").style.display = 'initial';
+	document.getElementById("no").style.display = 'initial';
+	document.getElementById("renewTweet").style.display = 'none';
+	document.getElementById("falseMessage").style.display = 'none';
+	document.getElementById("trueMessage").style.display = 'none';
+}
+document.getElementById("yes").addEventListener("click", trumpButton.bind(this, "TRUE"));
+document.getElementById("no").addEventListener("click", trumpButton.bind(this, "FALSE"));
+document.getElementById("renewTweet").addEventListener("click", renewPage);
+document.getElementById("renewTweet").addEventListener("click", getRand.bind(window));
+getRand();
 	</script>
 
 </body>

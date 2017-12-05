@@ -52,15 +52,15 @@ h4 {
 	float: left;
 }
 
-#TopTweet {
+#topTweet {
 	padding-bottom: 3px;
 }
 
-#NameTweet {
+#nameTweet {
 	padding-top: 20px;
 }
 
-#NameTweet a {
+#nameTweet a {
 	font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
   	font-size: 18px;
   	font-weight: bold;
@@ -72,7 +72,7 @@ h4 {
 	margin-bottom: 0px;
 }
 
-#NameTweet p {
+#nameTweet p {
 	color: #707464;
 	margin-top: 7px;
 	font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
@@ -80,19 +80,19 @@ h4 {
   	line-height: 10px;
 }
 
-#MainContent p {
+#mainContent p {
 	font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
   	font-size: 20px;
   	line-height: 28px;
 }
 
-#YesOrNo {
+#yesOrNo {
 	text-align: center;
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
 
-#NextTweet {
+#nextTweet {
 	text-align: center;
 	padding-top: 10px;
 	padding-bottom: 10px;
@@ -111,7 +111,7 @@ h4 {
 	float: right;
 }
 
-#TweetBottom p {
+#tweetBottom p {
 	font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
 	font-size: 12px;
 	color: #707464;
@@ -149,39 +149,26 @@ footer {
 	font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
 
 }
-#Result {
+#result {
 		display: none;
 		text-align: center;
 }
 
-#Result p {
+#result p {
 	text-align: center;
 	font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
 	font-size: 18px;
 
 }
 
-#TruString {
+#trueMessage, #falseMessage {
 		display: none;
 		text-align: center;
 		font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
 		font-size: 18px;
 }
 
-#FalsString {
-		display: none;
-		text-align: center;
-		font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
-		font-size: 18px;
-
-}
-
-#YoutubeVid {
-	text-align: center;
-	margin: 30 auto;
-}
-
-#Tru {
+#yes, #no {
   display: inline-block;
   padding: 15px 25px;
   font-size: 24px;
@@ -197,33 +184,22 @@ footer {
   box-shadow: 0 9px #0A2236;
 }
 
-#Tru:hover {background-color: #0F3351}
+#yes:hover {background-color: #0F3351}
 
-#Tru:active {
+#yes:active {
   background-color: #0F3351;
   box-shadow: 0 5px #05111B;
   transform: translateY(4px);
 }
 
-#Fals {
-  display: inline-block;
-  padding: 15px 25px;
-  font-size: 24px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  font-family: "Helvetica Neue", Roboto, "Segoe UI", Calibri, sans-serif;
+#no {
   background-color: #D90118;
-  border: none;
-  border-radius: 15px;
   box-shadow: 0 9px #77010E;
 }
 
-#Fals:hover {background-color: #9E0112}
+#no:hover {background-color: #9E0112}
 
-#Fals:active {
+#no:active {
   background-color: #9E0112;
   box-shadow: 0 5px #3C0107;
   transform: translateY(4px);
