@@ -5,18 +5,21 @@ const server = express();
 
 var getRandomTweet = function (callback) {
 	var rand = tweetIds[Math.floor(Math.random() * tweetIds.length)];
-	db.get("SELECT content, id, timestamp FROM tweets WHERE id=$id", {$id: rand}, function (err, res) { callback(JSON.stringify(res)); });
+	db.get("SELECT content, id, timestamp FROM tweets WHERE id=$id", {$id: rand}, function (err, res) { callback(res); });
 }
-var getTweetStatus = function (id, callback) {
-	db.get("SELECT isTrump, wrong, correct FROM tweets WHERE id=$id", {$id: id}, function (err, res) { callback(JSON.stringify(res)); });
+var tallyVote = function (id, vote, callback) {
+	if (vote === "TRUE") db.run("UPDATE tweets SET correct = correct + 1 WHERE id=$id", {$id: id});
+	else db.run("UPDATE tweets SET wrong = wrong + 1 WHERE id=$id", {$id: id});
+	db.get("SELECT isTrump, wrong, correct FROM tweets WHERE id=$id", {$id: id}, function (err, res) { callback(res); });
 }
 var init = function () {
-	server.get("/status/:id", function (req, res) {
+	server.get("/vote/:id/:vote", function (req, res) {
 		var id = req.params.id;
-		getTweetStatus(id, res.end.bind(res));
+		var vote = req.params.vote;
+		tallyVote(id, vote, res.json.bind(res));
 	});
 	server.get("/random", function (req, res) {
-		getRandomTweet(res.end.bind(res));
+		getRandomTweet(res.json.bind(res));
 	});
 	server.use(express.static("./static"));
 	server.listen(8080);
