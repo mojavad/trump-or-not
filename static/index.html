@@ -1,18 +1,24 @@
 <html>
 <head> 
 	<title>Trump Or Not?</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="/main.css">
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>                       	 <script>                                            
+	    (adsbygoogle = window.adsbygoogle || []).push({
+		google_ad_client: "ca-pub-7212609520281562",    
+		enable_page_level_ads: true                     
+	    });                                               
+    	</script>
 </head>
 <body>
 	<div id="header">
 		<h1><b>TrumpOrNot?</b></h1>
 		<h4>Did the 45th President of the United States of America tweet this?</h4>
 	</div>
-	<div class="spacer"></div>
 	<div id="tweetBox">
 		<div id="topTweet">
 		<div id="ppic">
@@ -29,18 +35,17 @@
 		</div>
 		<div id="tweetBottom">
 			<p id="timestamp">12:08 PM - 1 Dec 2017</p>
-			<img src = "img/twitter-foot.png">
 		</div>
 	</div>
-	<div class="spacer"></div>
-	<div id="message"></div>
-	<div id="percentage"></div>
 	<div id="voting">
 		<button id="yes">Trump!</button>
 		<button id="no">Not Trump!</button>
 		<button id="renewTweet">New Tweet</button>
 	</div>
-	<footer>© Copyright 2017 - Created by Dylan Thinnes, Mohammad Javad, and another passionate student in the UK.</footer>
+	<div id="message"></div>
+	<div id="percentage"></div>
+	<div class="spacer"></div>
+	<footer>© Copyright 2017 - Created by Dylan Thinnes and Mohammad Javad.</footer>
 
 
 	<script>
@@ -108,6 +113,5 @@ document.getElementById("renewTweet").addEventListener("click", renewPage);
 document.getElementById("renewTweet").addEventListener("click", getRand.bind(window));
 getRand();
 	</script>
-
 </body>
 </html>

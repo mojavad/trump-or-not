@@ -1,3 +1,4 @@
+html { font-size: 12px; }
 body {
 	padding: 0;
 	margin: 0;
@@ -13,13 +14,13 @@ body {
 
 h1, h4 {
 	text-align: center;
-	margin-bottom: 0;
-	margin-top: 10px;
+	margin: 0 10px 0 10px;
 	font-family: 'Playfair Display SC', serif;
 }
 
 h1 {
-	font-size: 40pt;
+	margin-top: 5px;
+	font-size: 4rem;
 }
 
 #trumpUnderlay {
@@ -43,6 +44,7 @@ h1 {
   	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
   	padding: 0 16px 16px 16px;
   	width: 468px;
+	max-width: 90vw;
  	margin: 10 auto;
 }
 
@@ -68,7 +70,7 @@ h1 {
 
 #nameTweet a {
 	
-  	font-size: 18px;
+  	font-size: 1.5rem;
   	font-weight: bold;
   	line-height: 16px;
 	text-decoration: none;
@@ -82,13 +84,13 @@ h1 {
 	color: #707464;
 	margin-top: 7px;
 	
-  	font-size: 12px;
+  	font-size: 1rem;
   	line-height: 10px;
 }
 
 #mainContent p {
 	
-  	font-size: 20px;
+  	font-size: 1.5rem;
   	line-height: 28px;
 }
 
@@ -119,7 +121,7 @@ h1 {
 
 #tweetBottom p {
 	
-	font-size: 12px;
+	font-size: ;
 	color: #707464;
 
 }
@@ -127,7 +129,7 @@ h1 {
 #renewTweet {
   display: none;
   padding: 15px 25px;
-  font-size: 24px;
+  font-size: 2rem;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -157,18 +159,20 @@ footer {
 .spacer {
 	flex: 1 1 auto;
 }
-
+#timestamp, #tweetText {
+	margin-bottom: 0;
+}
 #message, #percentage {
 	padding-top: 10px;
 	height: 30px;
 	text-align: center;
-	font-size: 18px;
+	font-size: 1.5rem;
 }
 
 #yes, #no {
   display: inline-block;
   padding: 15px 25px;
-  font-size: 24px;
+  font-size: 2rem;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -200,4 +204,10 @@ footer {
   background-color: #9E0112;
   box-shadow: 0 5px #3C0107;
   transform: translateY(4px);
+}
+
+@media (max-width: 768px) {
+  h1 {
+     font-size: 2rem;
+  }	
 }
